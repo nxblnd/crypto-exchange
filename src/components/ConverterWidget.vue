@@ -7,7 +7,7 @@
 import ExchangeRate from './ExchangeRate.vue';
 import WalletAddress from './WalletAddress.vue';
 export default {
-    components: { ExchangeRate, WalletAddress }
+  components: { ExchangeRate, WalletAddress }
 }
 </script>
 

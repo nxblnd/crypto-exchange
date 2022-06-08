@@ -1,10 +1,13 @@
 <template>
-  <p>Currency dropdown</p>
+  <select v-model="selected">
+      <option v-for="currency in currencies" :key="currency.ticker">{{ currency.ticker }} | {{ currency.name }}</option>
+  </select>
 </template>
 
 <script>
-export default {
 
+export default {
+  props: ['currencies']
 }
 </script>
 

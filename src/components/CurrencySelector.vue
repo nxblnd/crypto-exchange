@@ -1,5 +1,5 @@
 <template>
-  <div class="relative max-w-md bg-slate-100 outline outline-1 outline-solid outline-slate-400 hover:outline-slate-600 select-none" :class="{ rounded: !isOpen, 'rounded-t': isOpen }" tabindex="0" @blur="isOpen = false">
+  <div class="relative group max-w-md bg-slate-100 outline outline-1 outline-solid outline-slate-400 hover:outline-slate-600 select-none" :class="{ rounded: !isOpen, 'rounded-t': isOpen }" tabindex="0" @blur="isOpen = false">
     <div class="flex flex-wrap p-2.5">
       <input class="grow bg-inherit focus:outline-none focus-visible:outline-none placeholder:text-slate-400" v-model.number="amount" placeholder="0"/>
       <div class="flex justify-center gap-5 w-40 min-w-fit before:block before:border-l before:border-solid before:border-slate-400" @click="toggleList">
@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div class="absolute bg-inherit left-0 right-0 max-h-96 overflow-y-auto outline outline-1 rounded-b outline-solid outline-slate-400 hover:outline-slate-500 z-10" :class="{ hidden: !isOpen }">
+    <div class="absolute bg-inherit left-0 right-0 max-h-96 overflow-y-auto outline outline-1 rounded-b outline-solid outline-slate-400 group-hover:outline-slate-500 z-10" :class="{ hidden: !isOpen }">
       <div 
         v-for="(currency, index) in currencies"
         :key="index"

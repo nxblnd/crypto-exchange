@@ -1,6 +1,6 @@
 <template>
-  <div class="relative group w-96 bg-slate-100 outline outline-1 outline-solid outline-slate-400 hover:outline-slate-600 select-none" :class="{ rounded: !isOpen, 'rounded-t': isOpen }" tabindex="0" @blur="isOpen = false">
-    <div class="flex p-2.5">
+  <div class="relative group w-96 input select-none" :class="{ rounded: !isOpen, 'rounded-t': isOpen }" tabindex="0" @blur="isOpen = false">
+    <div class="flex">
       <input class="grow bg-inherit focus:outline-none focus-visible:outline-none placeholder:text-slate-400" v-model.number="amount" placeholder="0"/>
       <div class="flex justify-center gap-5 max-w-2xl before:block before:border-l before:border-solid before:border-slate-400" @click="toggleList">
         <template v-if="selected">

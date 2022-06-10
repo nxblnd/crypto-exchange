@@ -42,6 +42,7 @@ export default {
   components: { ChevronDownIcon, XIcon },
 
   props: ['currencies'],
+  emits: ['currencySelected'],
   
   data() {
     return {
@@ -55,6 +56,7 @@ export default {
     setSelected(currency) {
       this.selected = currency;
       this.toggleList();
+      this.$emit('currencySelected', currency.ticker);
     },
     toggleList() {
       this.isOpen = !this.isOpen;

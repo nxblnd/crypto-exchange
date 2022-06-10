@@ -5,7 +5,7 @@
       <div class="flex justify-center gap-5 w-40 min-w-fit before:block before:border-l before:border-solid before:border-slate-400" @click="toggleList">
         <template v-if="selected">
           <svg class="self-center ml-auto h-5 w-5" xmlns="http://www.w3.org/2000/svg"><image class="m-1" :href="selected.image" /></svg>
-          <p>{{ selected.ticker }}</p>
+          <p>{{ selected.ticker.toUpperCase() }}</p>
         </template>
         <template v-else>
           <p class="ml-auto text-slate-500">BTC</p>

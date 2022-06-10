@@ -1,15 +1,15 @@
 <template>
-  <div class="currency-selector relative">
-    <div class="selected flex">
-      <input class="amount bg-inherit" v-model.number="amount" placeholder="0"/>
-      <div class="currency" @click="toggleList">{{ selected.ticker }}</div>
+  <div class="relative max-w-md bg-slate-100 outline outline-1 outline-solid outline-slate-400 hover:outline-slate-500 select-none" :class="{ rounded: !isOpen, 'rounded-t': isOpen }" tabindex="0" @blur="toggleList">
+    <div class="flex flex-wrap p-2.5">
+      <input class="grow bg-inherit focus:outline-none focus-visible:outline-none" v-model.number="amount" placeholder="0"/>
+      <div class="w-40 min-w-fit" @click="toggleList">{{ selected.ticker }}</div>
     </div>
-    <div class="available-items absolute" :class="{ hidden: !isOpen }">
+    <div class="absolute bg-inherit left-0 right-0 overflow-hidden outline outline-1 rounded-b outline-solid outline-slate-400 hover:outline-slate-500 z-10" :class="{ hidden: !isOpen }">
       <div 
-        v-for="(currency, i) in currencies"
-        :key="i"
+        v-for="(currency, index) in currencies"
+        :key="index"
         @click="setSelected(currency)"
-        class="hover:bg-sky-200"
+        class="hover:bg-sky-200 p-2.5"
       >
         {{ currency.ticker }} | {{ currency.name }}
       </div>
@@ -43,8 +43,5 @@ export default {
 </script>
 
 <style scoped>
-.hidden {
-  display: none;
-}
 
 </style>

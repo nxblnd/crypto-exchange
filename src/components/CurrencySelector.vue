@@ -4,6 +4,7 @@
       <input class="grow bg-inherit focus:outline-none focus-visible:outline-none" v-model.number="amount" placeholder="0"/>
       <div class="flex w-40 min-w-fit" @click="toggleList">
         <template v-if="selected">
+          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"><image class="p-1" :href="selected.image" /></svg>
           <p>{{ selected.ticker }}</p>
         </template>
         <template v-else>

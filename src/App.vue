@@ -1,17 +1,21 @@
 <script setup>
-import ConverterWidget from './components/ConverterWidget.vue';
+  import ConverterWidget from './components/ConverterWidget.vue';
 </script>
 
 <template>
-  <header>
-    <h1>Crypto Exchange</h1>
-    <p>Exchange fast and easy</p>
+  <header class="container mx-auto p-4">
+    <h1 class="text-5xl font-light leading-relaxed">Crypto Exchange</h1>
+    <p class="text-xl">Exchange fast and easy</p>
   </header>
 
-  <main>
+  <main class="container mx-auto p-4">
     <ConverterWidget />
   </main>
 </template>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+  body {
+    font-family: 'Vollkorn', serif;
+  }
 </style>

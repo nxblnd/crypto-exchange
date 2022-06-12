@@ -4,6 +4,7 @@
     <SwitchVerticalIcon class="shrink-0 w-8 h-8 m-3 text-sky-500 md:rotate-90" />
     <CurrencySelector :currenciesList="availableCurrencies" v-model:currency="rightCurrency" @update:currency="calculate" />
   </div>
+  <p v-if="errors.tooLittle">Error: minimal amount for conversion is {{ minimalAmount }} {{ this.leftCurrency.currency.toUpperCase() }}</p>
 </template>
 
 <script>
@@ -21,13 +22,24 @@ export default {
       availableCurrencies: null,
       leftCurrency: { amount: null, currency: null },
       rightCurrency: { amount: null, currency: null },
+      minimalAmount: null,
+      errors: {
+        tooLittle: false,
+      },
     }
   },
 
   methods: {
     async calculate() {
       if (this.leftCurrency.currency === null || this.rightCurrency.currency === null) return;
-      this.leftCurrency.amount = Math.max(this.leftCurrency.amount, await this.getMinAmount());
+      this.minimalAmount = await this.getMinAmount();
+      this.leftCurrency.amount = this.leftCurrency.amount || this.minimalAmount;
+      if (this.leftCurrency.amount < this.minimalAmount) {
+        this.rightCurrency.amount = "---";
+        this.errors.tooLittle = true;
+        return;
+      }
+      this.errors.tooLittle = false;
       this.rightCurrency.amount = await this.convert();
     },
     async getMinAmount() {

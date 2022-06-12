@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col md:flex-row items-center my-5">
-    <CurrencySelector :currencies="availableCurrencies"/>
+    <CurrencySelector :currenciesList="availableCurrencies" v-model:currency="leftCurrency" @update:currency="calculate" />
     <SwitchVerticalIcon class="shrink-0 w-8 h-8 m-3 text-sky-500 md:rotate-90" />
-    <CurrencySelector :currencies="availableCurrencies"/>
+    <CurrencySelector :currenciesList="availableCurrencies" v-model:currency="rightCurrency" @update:currency="calculate" />
   </div>
 </template>
 
@@ -11,12 +11,32 @@ import axios from 'axios';
 import CurrencySelector from './CurrencySelector.vue';
 import { SwitchVerticalIcon } from '@heroicons/vue/outline'
 
+const API_KEY = 'c9155859d90d239f909d2906233816b26cd8cf5ede44702d422667672b58b0cd';
+
 export default {
   components: { CurrencySelector, SwitchVerticalIcon },
 
   data() {
     return {
       availableCurrencies: null,
+      leftCurrency: { amount: null, currency: null },
+      rightCurrency: { amount: null, currency: null },
+    }
+  },
+
+  methods: {
+    async calculate() {
+      if (this.leftCurrency.currency === null || this.rightCurrency.currency === null) return;
+      this.leftCurrency.amount = Math.max(this.leftCurrency.amount, await this.getMinAmount());
+      this.rightCurrency.amount = await this.convert();
+    },
+    async getMinAmount() {
+      const res = await axios.get(`https://api.changenow.io/v1/min-amount/${this.leftCurrency.currency}_${this.rightCurrency.currency}?api_key=${API_KEY}`);
+      return res.data.minAmount;
+    },
+    async convert() {
+      const res = await axios.get(`https://api.changenow.io/v1/exchange-amount/${this.leftCurrency.amount}/${this.leftCurrency.currency}_${this.rightCurrency.currency}?api_key=${API_KEY}`);
+      return res.data.estimatedAmount;
     }
   },
 

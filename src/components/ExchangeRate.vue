@@ -4,7 +4,9 @@
     <SwitchVerticalIcon class="shrink-0 w-8 h-8 m-3 text-sky-500 md:rotate-90" />
     <CurrencySelector :currenciesList="availableCurrencies" v-model:currency="rightCurrency" @update:currency="calculate" />
   </div>
-  <p v-if="errors.tooLittle">Error: minimal amount for conversion is {{ minimalAmount }} {{ this.leftCurrency.currency.toUpperCase() }}</p>
+  <Transition name="slide">
+    <p class="error" v-if="errors.tooLittle">Error: minimal amount for conversion is {{ minimalAmount }} {{ this.leftCurrency.currency.toUpperCase() }}</p>
+  </Transition>
 </template>
 
 <script>

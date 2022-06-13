@@ -26,3 +26,23 @@
 .input:focus-within {
     @apply bg-white outline-slate-600;
 }
+
+.error {
+    @apply text-red-800 bg-red-100 rounded outline outline-1 outline-red-400 p-2.5 my-4;
+}
+
+.slide-enter-active {
+    @apply transition-all duration-500 origin-top ease-in-out scale-y-100;
+}
+
+.slide-leave-active {
+    @apply transition-all duration-500 origin-top ease-in-out scale-y-0;
+}
+
+.slide-enter-from {
+    @apply scale-y-0;
+}
+
+.slide-leave-to {
+    @apply scale-y-0;
+}

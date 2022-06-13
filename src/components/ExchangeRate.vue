@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col md:flex-row items-center my-5">
+  <div class="flex flex-col items-stretch md:flex-row md:items-center my-5">
     <CurrencySelector :currenciesList="availableCurrencies" v-model:currency="leftCurrency" @update:currency="calculate" />
-    <SwitchVerticalIcon class="shrink-0 w-8 h-8 m-3 text-sky-500 md:rotate-90" />
+    <SwitchVerticalIcon class="shrink-0 w-8 h-8 m-3 text-sky-500 place-self-center md:rotate-90" />
     <CurrencySelector :currenciesList="availableCurrencies" v-model:currency="rightCurrency" @update:currency="calculate" />
   </div>
   <Transition name="slide">

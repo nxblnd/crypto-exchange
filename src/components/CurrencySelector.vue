@@ -1,18 +1,18 @@
 <template>
-  <div class="relative group w-96 input select-none" :class="{ rounded: !isOpen, 'rounded-t': isOpen }" tabindex="0" @blur="isOpen = false">
+  <div class="relative flex-auto md:basis-96 group input select-none" :class="{ rounded: !isOpen, 'rounded-t': isOpen }" tabindex="0" @blur="isOpen = false">
     <div class="flex">
-      <input class="grow bg-inherit focus:outline-none focus-visible:outline-none placeholder:text-slate-400" :value="currency.amount" @blur="$emit('update:currency', { currency: selected.ticker, amount: $event.target.value })" placeholder="0"/>
+      <input class="w-0 flex-auto bg-inherit focus:outline-none focus-visible:outline-none placeholder:text-slate-400" :value="currency.amount" @blur="$emit('update:currency', { currency: selected.ticker, amount: $event.target.value })" placeholder="0"/>
       <div class="flex justify-center gap-5 max-w-2xl before:block before:border-l before:border-solid before:border-slate-400" @click="toggleList">
         <template v-if="selected">
-          <svg class="self-center ml-auto h-5 w-5" xmlns="http://www.w3.org/2000/svg">
+          <svg class="self-center h-5 w-5" xmlns="http://www.w3.org/2000/svg">
             <image class="m-1" :href="selected.image" />
           </svg>
           <p>{{ selected.ticker.toUpperCase() }}</p>
         </template>
         <template v-else>
-          <p class="ml-auto text-slate-400">BTC</p>
+          <p class="text-slate-400">BTC</p>
         </template>
-        <div class="ml-auto self-center h-5 w-5 text-slate-500">
+        <div class="self-center h-5 w-5 text-slate-500">
           <ChevronDownIcon v-if="!isOpen" />
           <XIcon v-if="isOpen" />
         </div>

@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="absolute bg-inherit left-0 right-0 max-h-96 overflow-y-auto outline outline-1 rounded-b outline-solid outline-slate-400 group-hover:outline-slate-500 z-10" :class="{ hidden: !isOpen }">
+    <div class="absolute bg-inherit left-0 right-0 mt-2.5 max-h-96 overflow-y-auto outline outline-1 rounded-b outline-solid outline-slate-400 group-focus:outline-slate-500 z-10" :class="{ hidden: !isOpen }">
       <div 
         v-for="(currency, index) in currenciesList"
         :key="index"

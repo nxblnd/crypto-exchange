@@ -1,7 +1,7 @@
 <template>
   <p>Wallet Address</p>
   <div class="flex gap-5 flex-wrap md:flex-nowrap">
-    <input class="input min-w-0 grow" />
+    <input class="input rounded min-w-0 grow" />
     <button class="btn grow md:grow-0">Exchange</button>
   </div>
 </template>

@@ -4,9 +4,7 @@
       <input class="w-0 flex-auto bg-inherit focus:outline-none focus-visible:outline-none placeholder:text-slate-400" :value="currency.amount" @blur="$emit('update:currency', { currency: selected.ticker, amount: $event.target.value })" placeholder="0"/>
       <div class="flex justify-center gap-5 max-w-2xl before:block before:border-l before:border-solid before:border-slate-400" @click="toggleList">
         <template v-if="selected">
-          <svg class="self-center h-5 w-5" xmlns="http://www.w3.org/2000/svg">
-            <image class="m-1" :href="selected.image" />
-          </svg>
+          <img class="h-5" :src="selected.image" />
           <p>{{ selected.ticker.toUpperCase() }}</p>
         </template>
         <template v-else>
@@ -25,9 +23,7 @@
         @click="setSelected(currency)"
         class="flex gap-5 hover:bg-sky-200 p-2.5"
       >
-        <svg class="self-center h-5 w-5" xmlns="http://www.w3.org/2000/svg">
-          <image class="m-1" :href="currency.image" />
-        </svg>
+        <img class="h-5" :src="currency.image" />
         <p>{{ currency.ticker.toUpperCase() }}</p>
         <p class="text-slate-400">{{ currency.name }}</p>
       </div>

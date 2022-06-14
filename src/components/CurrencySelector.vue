@@ -17,7 +17,7 @@
       </div>
     </div>
     <div v-if="isOpen" class="bg-inherit">
-      <input class="w-full flex-auto focus:outline-none focus-visible:outline-none placeholder:text-slate-400" v-model="filter" ref="filterInput" placeholder="Search"/>
+      <input class="w-full bg-inherit flex-auto focus:outline-none focus-visible:outline-none placeholder:text-slate-400" v-model="filter" ref="filterInput" placeholder="Search"/>
       <div class="absolute bg-inherit left-0 right-0 mt-2.5 max-h-96 overflow-y-auto outline outline-1 rounded-b outline-solid outline-slate-400 group-focus:outline-slate-500 z-10" :class="{ hidden: !isOpen }">
         <div 
           v-for="(currency, index) in filteredCurrenciesList"
